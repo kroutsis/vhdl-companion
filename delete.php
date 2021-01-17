@@ -6,11 +6,20 @@ $path = PATH.'uploads/'.$username.'/';
 
 $files_arr = array();
 if(isset($_POST['files'])){
-	foreach($_POST['files'] as $filename) {
-		$filepath = $path.$filename;
-		array_push($files_arr,$filepath);
+	if($username == "guest"){
+		foreach($_POST['files'] as $filename) {
+			if(($filename != "and_gate.vhd")&&($filename != "comb_ckt_with_unused_signals.vhd")&&($filename != "or_gate_bad_code_sructure.vhd")){
+				$filepath = $path.$filename;
+				array_push($files_arr,$filepath);
+			}
+		}
+	}else{
+		foreach($_POST['files'] as $filename) {
+			$filepath = $path.$filename;
+			array_push($files_arr,$filepath);
+		}
 	}
-}
+}	
 
 foreach ($files_arr as $file_name){
 	if(!unlink($file_name)){

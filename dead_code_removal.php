@@ -77,7 +77,7 @@ foreach ($files_arr as $file_name){
 	
 }
 	
-	
+/*	
 if ($files_with_unused_signals != NULL){
 	foreach ($files_with_unused_signals as $file_name){
 		$line_num = 0;
@@ -93,7 +93,7 @@ if ($files_with_unused_signals != NULL){
 			
 			foreach ($unused_signals as $un){
 				if($line_num == $un['line_num']){
-					/*
+					
 					if ((strpos($line, ',') !== FALSE) && (strpos((strrchr($line, $un['name'])),',') === FALSE)) {
 						if(strpos($line, ','.$un['name']) !== FALSE){
 							$templine = str_replace(','.$un['name'],"",$line);
@@ -106,10 +106,10 @@ if ($files_with_unused_signals != NULL){
 						fwrite($cor_file,(str_replace($un['name'].',',"",$line)));
 						$flag = 1;
 					} else {
-						*/
+						
 						fwrite($cor_file,(str_replace($line,"",$line)));
 						$flag = 1;
-					//}
+					}
 					
 				}
 				
@@ -135,9 +135,9 @@ if ($files_with_unused_signals != NULL){
 		$db_user = DBUSER;
 		$db_pass = DBPASS;
 		
-		$file_name_for_db = (get_string_between($newfile, $path, ".vhd")).".vhd";
-		
-		$sql = "INSERT INTO files(filename, dir, username)VALUES('{$file_name_for_db}', '{$newfile}', '{$username}');";
+		$file_name_for_db = (get_string_between($cor_file, $path, ".vhd")).".vhd";
+
+		$sql = "INSERT INTO files(filename, dir, username)VALUES('{$file_name_for_db}', '{$cor_file}', '{$username}');";
 		try{
 			$conn = new PDO("mysql:host=$db_host;dbname=$db_name", "$db_user", "$db_pass");
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -151,7 +151,7 @@ if ($files_with_unused_signals != NULL){
 		//echo "<br><a href='javascript:window.location.reload(true)'>Reload Page</a><br>";
 	}
 }
-
+*/
 function get_string_between($string, $start, $end){
 	$string = " ".$string;
 	$ini = strpos($string,$start);

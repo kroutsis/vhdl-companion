@@ -16,8 +16,8 @@ if(isset($_SESSION['username']) && ($_SESSION['username'] == "guest")){
 			unlink($path.$file_name);
 		}
 	}
-	/*
-	$sql = "DELETE FROM users WHERE username = '{$username}'";
+	
+	$sql = "DELETE FROM files WHERE username = '{$username}';";
 	try{
 		$conn = new PDO("mysql:host=$db_host;dbname=$db_name", "$db_user", "$db_pass");
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -28,7 +28,7 @@ if(isset($_SESSION['username']) && ($_SESSION['username'] == "guest")){
 	}catch(PDOException $e){
 		echo "Update database failed: ".$e->getMessage();
 	}
-	*/
+	
 }
 
 session_unset();
